@@ -1,0 +1,13 @@
+{% extends 'manual_test/base.html' %}
+
+{% block title %}
+    BugAndTest Связь с Администратором
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h3>Письмо успешно отправлено!</h3>
+    <h3>Дождитесь ответа Администратора</h3>
+    <h3>Чтобы вернуться на главную страницу нажмите <a href="{% url 'index' %}">сюда</a></h3>
+</div>
+{% endblock %}

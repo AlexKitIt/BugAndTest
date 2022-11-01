@@ -1,0 +1,17 @@
+{% extends 'manual_test/base.html' %}
+
+{% block title %}
+    BugAndTest Вход
+{% endblock %}
+
+{% block content %}
+<div class="container-form">
+    <h3>Авторизация</h3>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="button">Вход</button>
+    </form>
+</div>
+<h3>{{error}}</h3>
+{% endblock %}

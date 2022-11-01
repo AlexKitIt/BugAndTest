@@ -1,0 +1,29 @@
+{% extends 'manual_test/base.html' %}
+
+{% block title %}
+    BugAndTest Редактировать тест {{ test.name }}
+{% endblock %}
+
+{% block content %}
+<h3>Редактирование test-case</h3>
+<div class="view">
+    <div class="container">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="button">Сохранить</button>
+        </form>
+    </div>
+    <div class="container">
+        <table>
+            <tr><th>Test-Suite</th><td>{{example.test_suite}}</td></tr>
+            <tr><th>Название</th><td>{{example.name}}</td></tr>
+            <tr><th>Предусловия</th><td>{{example.preconditions}}</td></tr>
+            <tr><th>Шаги</th><td>{{example.steps}}</td></tr>
+            <tr><th>Ожидаемый результат</th><td>{{example.result}}</td></tr>
+            <tr><th>Дата создания</th><td>{{example.created}}</td></tr>
+            <tr><th>Автор</th><td>{{example.user}}</td></tr>
+        </table>
+    </div>
+</div>
+{% endblock %}

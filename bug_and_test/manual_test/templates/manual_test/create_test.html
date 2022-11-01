@@ -1,0 +1,24 @@
+{% extends 'manual_test/base.html' %}
+
+{% block title %}
+    BugAndTest Создать тест
+{% endblock %}
+
+{% block content %}
+{% load static %}
+<h3>Создание test-case</h3>
+<div class="view">
+    <div class="container">
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="button">Сохранить</button>
+    </form>
+    </div>
+    <div>
+        <p>Код для автотеста должен быть составлен по форме:</p>
+        <div><img id="code" src="{% static 'mt/example.png' %}"></div>
+        <p>Для запуска теста необходимо перместить програмный код в файл test.py и следовать инструкциям из файла</p>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'manual_test/base.html' %}
+
+{% block title %}
+    BugAndTest Тест {{ test.name }}
+{% endblock %}
+
+{% block content %}
+<div class="view">
+<div class="container">
+    <h3>{{test.id}}:{{test.name}}</h3>
+    <table>
+        <tr><th>ID</th><td>{{test.id}}</td></tr>
+        <tr><th>Название</th><td>{{test.name}}</td></tr>
+        <tr><th>Предусловия</th><td>{{test.preconditions}}</td></tr>
+        <tr><th>Шаги</th><td>{{test.steps}}</td></tr>
+        <tr><th>Ожидаемый результат</th><td>{{test.result}}</td></tr>
+        <tr><th>Дата создания/обновления</th><td>{{test.created}}</td></tr>
+        <tr><th>Автор</th><td>{{test.user}}</td></tr>
+        <tr><th>Код</th><td>
+            {% if test.code %}
+                <a href="{{ test.code.url }}">Ссылка на документ</a>
+            {% else %}
+                <p>Код для автотеста не добавлялся</p>
+            {% endif %}
+        </td></tr>
+    </table>
+    </div>
+    <div class="container margin-">
+        <form action="{% url 'edit_test' test.id %}">
+            {% csrf_token %}
+            <button class="button">Редактировать</button>
+        </form>
+        <form action="{% url 'delete_test' test.id %}" method="post">
+            {% csrf_token %}
+            <button class="button">Удалить</button>
+        </form>
+    </div>
+    </div>
+{% endblock %}

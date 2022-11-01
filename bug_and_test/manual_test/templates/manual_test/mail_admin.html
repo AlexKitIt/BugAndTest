@@ -1,0 +1,27 @@
+{% extends 'manual_test/base.html' %}
+
+{% block title %}
+    BugAndTest Связь с администратором
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>Написать письмо</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <p>
+            <button class="button" type="submit">Отправить</button>
+        </p>
+    </form>
+
+    <div class="info">
+        <ul>В письме необходимо указать:
+            <li>Название проекта, к которому необходимы доступы</li>
+            <li>Роль пользователя (QA или Участник команды)</li>
+            <li>Ссылка на задачу, для работы по которой необходимы доступы</li>
+        </ul>
+    </div>
+</div>
+
+{% endblock %}

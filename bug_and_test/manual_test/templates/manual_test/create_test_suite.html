@@ -1,0 +1,28 @@
+{% extends 'manual_test/base.html' %}
+
+{% block title %}
+    BugAndTest Создать test-suite
+{% endblock %}
+
+{% block content %}
+<h3>Создание test-suite</h3>
+<div class="container">
+    <div>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="button" type="submit">Сохранить</button>
+        </form>
+    </div>
+    <br>
+    <hr>
+    <div>
+        <p>Созданные test-suites</p>
+        {% for ts in test_suite %}
+            <div>
+                <a class="ts" href="{{ ts.get_absolute_url }}" >{{ ts.name }}</a>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

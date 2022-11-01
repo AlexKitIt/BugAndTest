@@ -1,0 +1,50 @@
+{% extends 'manual_test/base.html' %}
+
+{% block title %}
+    BugAndTest Тесты
+{% endblock %}
+
+{% block content %}
+<div class="view">
+    <div class="categories">
+    {% for ts in test_suite %}
+        <div>
+            <a href="{{ ts.get_absolute_url }}" >{{ ts.name }}</a>
+        </div>
+    {% endfor %}
+    </div>
+
+    <div>
+        {% if tests %}
+            <h3>Тесты</h3>
+                {% for test in tests %}
+                <div class="ts">
+                    <div class="view">
+                        <div class="container-table">
+                            <table>
+                                <tr><th>ID</th><td>{{test.id}}</td></tr>
+                                <tr><th>Название</th><td>{{test.name}}</td></tr>
+                                <tr><th>Дата создания/обновления</th><td>{{test.created}}</td></tr>
+                                <tr><th>Код</th><td>
+                                    {% if test.code %}
+                                        <a href="{{ test.code.url }}">Ссылка на документ</a>
+                                    {% else %}
+                                        <p>Код для автотеста не добавлялся</p>
+                                    {% endif %}
+                                </td></tr>
+                            </table>
+                        </div>
+                        <div class="container-table">
+                            <form action="{% url 'one_test' test.id  %}">
+                                {% csrf_token %}
+                                <button class="button">Перейти к тесту</button>
+                            </form>
+                        </div>
+                    <br>
+                </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

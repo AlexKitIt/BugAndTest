@@ -1,0 +1,12 @@
+{% extends 'manual_test/base.html' %}
+
+{% block title %}
+    BugAndTest Test-suite
+{% endblock %}
+
+{% block content %}
+<h3>Выберите категорию</h3>
+{% for ts in test_suite %}
+    <a href="{{ ts.get_absolute_url }}" >{{ ts.name }}</a>
+{% endfor %}
+{% endblock %}
