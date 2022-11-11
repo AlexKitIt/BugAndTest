@@ -141,7 +141,7 @@ class ContactCreate(CreateView):
 
 
 def email(subject, content):
-    send_mail(subject, content, 'user@gmail.com', ['admin@gmail.com'])
+    send_mail(subject, content, 'app@gmail.com', ['admin@gmail.com'])
 
 
 def success(request):
